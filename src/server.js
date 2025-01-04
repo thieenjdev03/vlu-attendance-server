@@ -9,7 +9,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Role = require('./models/Role');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
+
+
+
 require('dotenv').config();
 
 const app = express();
@@ -140,12 +145,11 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
     res.send('Welcome to VLU Attendance Server!');
+    console.log("Environment Variables:");
+    console.log("CLIENT_ID:", process.env.CLIENT_ID);
+    console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET ? "Configured" : "Not Configured");
+    console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
+    console.log("TENANT_ID:", process.env.TENANT_ID);
+    console.log("PORT:", process.env.PORT);
+    console.log("BASE_URL:", process.env.BASE_URL);
 });
-
-console.log("Environment Variables:");
-console.log("CLIENT_ID:", process.env.CLIENT_ID);
-console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET ? "Configured" : "Not Configured");
-console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
-console.log("TENANT_ID:", process.env.TENANT_ID);
-console.log("PORT:", process.env.PORT);
-console.log("BASE_URL:", process.env.BASE_URL);
