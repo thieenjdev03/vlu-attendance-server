@@ -59,7 +59,7 @@ const CALLBACK_URL = process.env.CALLBACK_URL;
 const TENANT_ID = process.env.TENANT_ID;
 // Passport configuration
 passport.use(new MicrosoftStrategy({
-    clientID: 'b124aa58-71a9-43fd-9962-6c81b6281dc8',
+    clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
     callbackURL: CALLBACK_URL,
     scope: ['user.read'],
