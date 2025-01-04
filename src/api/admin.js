@@ -25,17 +25,17 @@ router.get('/users', async (req, res) => {
 });
 router.post('/users', async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, displayName, phone, personalEmail } = req.body;
     const user = {
       microsoftId: uuidv4(),
-      displayName: null,
+      displayName,
       email,
       accessToken: null,
       lastLogin: null, // Sửa lỗi chính tả ở đây
       role: "675efcfcf5200355f4e3c04e",
       status: 0,
-      phone: null,
-      personalEmail: null
+      phone,
+      personalEmail,
 
     };
     const result = await UserDAO.insert(user);

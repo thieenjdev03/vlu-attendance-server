@@ -24,7 +24,8 @@ const corsOptions = {
         const allowedOrigins = [
             'http://localhost:3039',
             'http://localhost:3001',
-            'https://vlu-attendance-server.vercel.app'
+            'https://vlu-attendance-server.vercel.app',
+            'https://vlu-manage.vercel.app'
         ];
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
