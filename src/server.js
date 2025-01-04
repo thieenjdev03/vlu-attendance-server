@@ -9,6 +9,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Role = require('./models/Role');
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 require('dotenv').config();
 
 const app = express();
@@ -17,7 +18,11 @@ const PORT = process.env.PORT || 3001;
 // CORS Configuration
 const corsOptions = {
     origin: (origin, callback) => {
-        const allowedOrigins = ['http://localhost:3039', 'http://localhost:3001'];
+        const allowedOrigins = [
+            'http://localhost:3039',
+            'http://localhost:3001',
+            'https://vlu-attendance-server.vercel.app'
+        ];
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {
@@ -94,13 +99,13 @@ app.get('/auth/microsoft', passport.authenticate('microsoft'));
 app.get('/api/auth/callback',
     passport.authenticate('microsoft', { failureRedirect: 'http://localhost:3001/admin?error=login_failed' }),
     (req, res) => {
-        res.redirect('http://localhost:3001/admin/home');
+        res.redirect(`${BASE_URL}/admin/home`);
     });
 
 app.get('/logout', (req, res, next) => {
     req.logout((err) => {
         if (err) { return next(err); }
-        res.redirect('http://localhost:3001/admin');
+        res.redirect(`${BASE_URL}/admin`);
     });
 });
 
