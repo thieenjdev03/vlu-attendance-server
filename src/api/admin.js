@@ -7,75 +7,13 @@ const { v4: uuidv4 } = require('uuid');
 // utils
 const EmailUtil = require('../utils/EmailUtil');
 // daos
-const RoleDAO = require('../models/RoleDAO'); 
-const UserDAO = require('../models/UserDAO'); 
+const RoleDAO = require('../models/RoleDAO');
+const UserDAO = require('../models/UserDAO');
 const ProductDAO = require('../models/ProductDAO');
 const CategoryDAO = require('../models/CategoryDAO');
 const AdminDAO = require('../models/AdminDAO');
 const OrderDAO = require('../models/OrderDAO');
 const CustomerDAO = require('../models/CustomerDAO');
-
-// login
-// router.post('/login', async function (req, res) {
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   if (username && password) {
-//     const admin = await AdminDAO.selectByUsernameAndPassword(username,password);
-//     if (admin) {
-//       const token = JwtUtil.genToken();
-//       res.json({ success: true, message: 'Authentication successful', token: token });
-//     } else {
-//       res.json({ success: false, message: 'Incorrect username or password' });
-//     }
-//   } else {
-//     res.json({ success: false, message: 'Please input username and password' });
-//   }
-// });
-// router.get('/token', JwtUtil.checkToken, function (req, res) {
-//   const token = req.headers['x-access-token'] || req.headers['authorization'];
-//   res.json({ success: true, message: 'Token is valid', token: token });
-// });
-//admin_user
-// router.get('/users', JwtUtil.checkToken, async function (req, res) { 
-//   const admins = await AdminDAO.selectAll(); 
-//   res.json(admins);
-// });
-// router.post('/users', JwtUtil.checkToken, async function (req, res) {
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   const cid = req.body.role;
-//   const email = req.body.email;
-//   const ten = req.body.ten;
-//   const trangthai = req.body.trangthai;
-//   const role = await RoleDAO.selectByID(cid);
-//   const admin = { username: username, password: password, email: email, ten: ten, trangthai:trangthai, role: role };
-//   const result = await AdminDAO.insert(admin);
-//   res.json(result);
-// });
-// router.delete('/users/:id', JwtUtil.checkToken, async function (req, res) {
-//   const _id = req.params.id;
-//   const result = await AdminDAO.delete(_id);
-//   res.json(result);
-// });
-// router.put('/users/:id', JwtUtil.checkToken, async function (req, res) {
-//   const _id = req.params.id;
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   const cid = req.body.role;
-//   const email = req.body.email;
-//   const ten = req.body.ten;
-//   const trangthai = req.body.trangthai;
-//   const role = await RoleDAO.selectByID(cid);
-
-//   const admin = { _id: _id,username: username, password: password, email: email, ten: ten, trangthai:trangthai, role: role };
-//   const result = await AdminDAO.update(admin);
-//   res.json(result);
-// });
-// router.get('/users/:id', async function (req, res) {
-//   const _id = req.params.id;
-//   const user = await AdminDAO.selectByID(_id);
-//   res.json(user);
-// });
 
 router.get('/users', async (req, res) => {
   try {
@@ -164,7 +102,7 @@ router.put('/users/edit/:id', async (req, res) => {
     const { displayName } = req.body;
     const { phone } = req.body;
     const { personalEmail } = req.body;
-    const user = { _id: id, displayName,phone, personalEmail };
+    const user = { _id: id, displayName, phone, personalEmail };
     const result = await UserDAO.update(user);
     res.json(result);
   } catch (error) {

@@ -142,4 +142,10 @@ app.get('/', (req, res) => {
     res.send('Welcome to VLU Attendance Server!');
 });
 
-console.log('test sync');
+console.log("Environment Variables:");
+console.log("CLIENT_ID:", process.env.CLIENT_ID);
+console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET ? "Configured" : "Not Configured");
+console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
+console.log("TENANT_ID:", process.env.TENANT_ID);
+console.log("PORT:", process.env.PORT);
+console.log("BASE_URL:", process.env.BASE_URL);
