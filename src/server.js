@@ -12,10 +12,6 @@ const User = require('./models/User');
 const Role = require('./models/Role');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
-
-
-
-
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
 const app = express();
@@ -167,4 +163,5 @@ app.get('/', (req, res) => {
     console.log("TENANT_ID:", process.env.TENANT_ID);
     console.log("PORT:", process.env.PORT);
     console.log("BASE_URL:", process.env.BASE_URL);
+    console.log('CLIENT_ID before MicrosoftStrategy:', process.env.CLIENT_ID);
 });
