@@ -1,0 +1,91 @@
+/* Base styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #B81E2B;
+  color: #FFFFFF;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  background: #FFFFFF;
+  padding: 30px;
+  border-radius: 10px;
+  color: #2D334D;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #D62134;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.info, .docs {
+  margin-top: 30px;
+}
+
+.info h2, .docs h2 {
+  font-size: 1.8rem;
+  color: #2D334D;
+  margin-bottom: 10px;
+}
+
+code {
+  display: inline-block;
+  background: #2D334D;
+  color: #FFFFFF;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #2D334D;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #2D334D;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  code {
+    font-size: 0.9rem;
+  }
+}

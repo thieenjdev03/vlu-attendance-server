@@ -51,7 +51,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
-
+app.use(express.static('public'));
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -156,13 +156,6 @@ app.use(function (req, res, next) {
     next() //otherwise continue
 });
 app.get('/', (req, res) => {
-    res.send('Welcome to VLU Attendance Server!');
-    console.log("Environment Variables:");
-    console.log("CLIENT_ID:", process.env.CLIENT_ID);
-    console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET ? "Configured" : "Not Configured");
-    console.log("CALLBACK_URL:", process.env.CALLBACK_URL);
-    console.log("TENANT_ID:", process.env.TENANT_ID);
-    console.log("PORT:", process.env.PORT);
-    console.log("BASE_URL:", process.env.BASE_URL);
-    console.log('CLIENT_ID before MicrosoftStrategy:', process.env.CLIENT_ID);
+    res.sendFile(path.join(__dirname, 'views', 'welcome.html'));
 });
+
