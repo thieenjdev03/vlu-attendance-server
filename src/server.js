@@ -16,7 +16,7 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
