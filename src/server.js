@@ -12,7 +12,8 @@ const User = require('./models/User');
 const Role = require('./models/Role');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
-require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+// require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
