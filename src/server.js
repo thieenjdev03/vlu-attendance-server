@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const MicrosoftStrategy = require('passport-microsoft').Strategy;
-const session = require('express-session');
+const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
@@ -41,7 +42,14 @@ const corsOptions = {
 // Middleware
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
-app.use(session({ secret: 'dung123456', resave: false, saveUninitialized: true }));
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: 'dung123456'
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
@@ -143,6 +151,12 @@ app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
+app.use(function (req, res, next) {
+    if (!req.session) {
+        return next(new Error('Oh no')) //handle error
+    }
+    next() //otherwise continue
+});
 app.get('/', (req, res) => {
     res.send('Welcome to VLU Attendance Server!');
     console.log("Environment Variables:");
