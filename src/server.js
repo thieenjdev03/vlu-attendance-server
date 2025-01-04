@@ -137,4 +137,9 @@ app.use('/api/customer', require('./api/customer.js'));
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+app.get('/', (req, res) => {
+    res.send('Welcome to VLU Attendance Server!');
+});
+
 console.log('test sync');
